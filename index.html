@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Love Story</title>
+    <style>
+        :root {
+            --bg-color: #fdf2f8;
+            --text-color: #4c1d3c;
+            --accent-color: #ec4899;
+            --secondary-color: #d946ef;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .heart {
+            font-size: 4rem;
+            color: var(--accent-color);
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+
+        .container {
+            max-width: 600px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.15);
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            min-height: 80px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-yes {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-yes:hover {
+            background-color: var(--secondary-color);
+            box-shadow: 0 5px 15px rgba(217, 70, 239, 0.4);
+        }
+
+        .btn-no {
+            background-color: #e2e8f0;
+            color: #475569;
+        }
+
+        .btn-no:hover {
+            background-color: #cbd5e1;
+        }
+
+        #success-box {
+            display: none;
+            margin-top: 20px;
+            padding: 25px;
+            background-color: #fce7f3;
+            border-radius: 15px;
+            border: 2px dashed var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart">❤️</div>
+        <h1>haya no5erjuuuuu :D </h1>
+        <p>7abet njrb nt3lm n3ml sitet donc golt 3lh mnjrbch 3lik muhehe!</p>
+
+        <div class="button-group" id="btn-container">
+            <button class="btn btn-yes" id="yes-btn" onclick="handleYes()">Yes! 🥰</button>
+            <button class="btn btn-no" id="no-btn" onclick="handleNo()">No 😢</button>
+        </div>
+
+        <div id="success-box">
+            <h2>Yeppiiiiiii  🎉</h2>
+            <p style="margin-top: 10px; margin-bottom: 0;">taw nchufu kifih hani gtlk mmkn tmchi t9ri 3la ro7k (mlgtch emojiss)!</p>
+            <div class="heart" style="font-size: 2.5rem; margin-top: 15px;">💖</div>
+        </div>
+    </div>
+
+    <script>
+        const noResponses = [
+            "whyyy 🥺",
+            "are you sure?? ",
+            "haya haya! 😭",
+            "pls 🥹",
+            "yezi bla chmata ya m5lou99aaa 🙈"
+        ];
+
+        let noCount = 0;
+        let yesSize = 1.1; // Starting font size in rem
+
+        function handleNo() {
+            noCount++;
+            const noBtn = document.getElementById('no-btn');
+            const yesBtn = document.getElementById('yes-btn');
+
+            if (noCount < noResponses.length) {
+                // Change No button text to playful dramatic plea
+                noBtn.innerText = noResponses[noCount];
+
+                // Make Yes button bigger with every click
+                yesSize += 0.35;
+                yesBtn.style.fontSize = yesSize + 'rem';
+                yesBtn.style.padding = (15 + noCount * 4) + 'px ' + (30 + noCount * 8) + 'px';
+            } else {
+                // Disappear completely
+                noBtn.style.display = 'none';
+                
+                // Max size for Yes button
+                yesBtn.style.fontSize = '2.2rem';
+                yesBtn.style.padding = '25px 60px';
+                yesBtn.innerText = 'YES! (No was never an option) 😉';
+            }
+        }
+
+        function handleYes() {
+            // Hide buttons and show celebration message
+            document.getElementById('btn-container').style.display = 'none';
+            document.getElementById('success-box').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
